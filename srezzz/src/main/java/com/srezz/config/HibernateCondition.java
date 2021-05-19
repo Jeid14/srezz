@@ -16,4 +16,5 @@ public class HibernateCondition extends AnyNestedCondition {
     @ConditionalOnProperty(name = "db.connector", havingValue = "hibernateCriteria")
     static class CriteriaCondition {
     }
+
 }
