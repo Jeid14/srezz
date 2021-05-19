@@ -26,7 +26,8 @@ public class SpringDataService implements IMusicGroupService {
 
     @Override
     public void editMusicGroup(MusicGroupUpdateDto musicGroupUpdateDto) {
-        MusicGroup musicGroup = groupRepo.findByName(musicGroupUpdateDto.getOldName()).orElseThrow(() -> new GroupNotFoundException("Group with name " + musicGroupUpdateDto.getOldName() + " not found"));
+        MusicGroup musicGroup = groupRepo.findByName(musicGroupUpdateDto.getOldName())
+                .orElseThrow(() -> new GroupNotFoundException("Group with name " + musicGroupUpdateDto.getOldName() + " not found"));
         updateMusicGroup(musicGroupUpdateDto, musicGroup);
     }
 
@@ -57,7 +58,6 @@ public class SpringDataService implements IMusicGroupService {
         if (musicGroupUpdateDto.getDecayYear() != null) {
             musicGroup.setYearDecay(musicGroupUpdateDto.getDecayYear());
         }
-        System.out.println(musicGroup);
         groupRepo.save(musicGroup);
     }
 }
