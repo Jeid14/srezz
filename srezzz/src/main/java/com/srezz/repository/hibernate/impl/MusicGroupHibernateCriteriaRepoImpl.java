@@ -18,7 +18,7 @@ import java.util.Set;
 @CriteriaQualifier
 @ConditionalOnProperty(name = "db.connector", havingValue = "hibernateCriteria")
 public class MusicGroupHibernateCriteriaRepoImpl implements IMusicGroupHibernateRepo {
-    private final String NAME_PARAMETER = "name";
+    private static final String NAME_PARAMETER = "name";
     private final SessionFactory sessionFactory;
 
     public MusicGroupHibernateCriteriaRepoImpl(SessionFactory sessionFactory) {

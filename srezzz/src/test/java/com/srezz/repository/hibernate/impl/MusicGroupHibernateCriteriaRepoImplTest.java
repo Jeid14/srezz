@@ -3,16 +3,18 @@ package com.srezz.repository.hibernate.impl;
 import com.srezz.entity.MusicGroup;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+
+import javax.persistence.criteria.*;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
+
+import static com.srezz.utils.HqlQuery.NAME_PARAMETER;
 
 class MusicGroupHibernateCriteriaRepoImplTest {
     private final SessionFactory sessionFactory = Mockito.mock(SessionFactory.class);
@@ -20,6 +22,10 @@ class MusicGroupHibernateCriteriaRepoImplTest {
     private final CriteriaBuilder builder = Mockito.mock(CriteriaBuilder.class);
     private final CriteriaQuery<MusicGroup> query = Mockito.mock(CriteriaQuery.class);
     private final Root<MusicGroup> root = Mockito.mock(Root.class);
+    private final Predicate predicate = Mockito.mock(Predicate.class);
+    private final Path<Object> path = Mockito.mock(Path.class);
+    private final Expression<String> expression = Mockito.mock(Expression.class);
+    private final Query<MusicGroup> musicGroupQuery = Mockito.mock(Query.class);
     private final MusicGroupHibernateCriteriaRepoImpl cut = new MusicGroupHibernateCriteriaRepoImpl(sessionFactory);
 
     private static Stream<Arguments> saveTestSource() {
@@ -64,10 +70,17 @@ class MusicGroupHibernateCriteriaRepoImplTest {
     void findByNamesTest(Set<String> names) {
         Mockito.when(sessionFactory.getCurrentSession()).thenReturn(session);
         Mockito.when(session.getCriteriaBuilder()).thenReturn(builder);
-        Mockito.when(sessionFactory.getCriteriaBuilder()).thenReturn(builder);
+        Mockito.when(builder.createQuery(MusicGroup.class)).thenReturn(query);
+        Mockito.when(query.from(MusicGroup.class)).thenReturn(root);
+        Mockito.when(query.select(root)).thenReturn(query);
+        Mockito.when(root.get(NAME_PARAMETER)).thenReturn(path);
+        Mockito.when(builder.lower(root.get(NAME_PARAMETER))).thenReturn(expression);
+        Mockito.when(builder.lower(root.get(NAME_PARAMETER)).in(names)).thenReturn(predicate);
+        Mockito.when(query.where(builder.lower(root.get(NAME_PARAMETER)).in(names))).thenReturn(query);
+        Mockito.when(session.createQuery(query)).thenReturn(musicGroupQuery);
 
-        cut.save(names);
+        cut.findByNames(names);
 
-        Mockito.verify(session, Mockito.times(1)).save(musicGroup);
+        Mockito.verify(musicGroupQuery, Mockito.times(1)).list();
     }
 }
