@@ -12,8 +12,8 @@ com/srezz/qualifier/CriteriaQualifier.java
  com.srezz.qualifier.CriteriaQualifier
 com/srezz/utils/Fields.java
  com.srezz.utils.Fields
-com/srezz/modelDto/MusicGroupUpdateDto.java
- com.srezz.modelDto.MusicGroupUpdateDto
+com/srezz/modelDto/MusicGroupSaveDto.java
+ com.srezz.modelDto.MusicGroupSaveDto
 com/srezz/modelDto/AlbumForUser.java
  com.srezz.modelDto.AlbumForUser
 com/srezz/entity/Genre.java
@@ -48,6 +48,8 @@ com/srezz/repository/hibernate/IMusicGroupHibernateRepo.java
  com.srezz.repository.hibernate.IMusicGroupHibernateRepo
 com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImpl.java
  com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImpl
+com/srezz/modelDto/MusicGroupUpdateDto.java
+ com.srezz.modelDto.MusicGroupUpdateDto
 com/srezz/controllers/SaveController.java
  com.srezz.controllers.SaveController
 com/srezz/services/IMusicGroupService.java
@@ -56,15 +58,13 @@ com/srezz/services/impl/HibernateMusicGroupBase.java
  com.srezz.services.impl.HibernateMusicGroupBase
 com/srezz/services/impl/HibernateCriteriaGroupService.java
  com.srezz.services.impl.HibernateCriteriaGroupService
-com/srezz/exception/advicecontroller/AdviceController.java
- com.srezz.exception.advicecontroller.AdviceController
+com/srezz/services/impl/HibernateHqlGroupService.java
+ com.srezz.services.impl.HibernateHqlGroupService
 com/srezz/controllers/UpdateController.java
  com.srezz.controllers.UpdateController
 com/srezz/services/impl/MusicGroupJpqlService.java
  com.srezz.services.impl.MusicGroupJpqlService
 com/srezz/controllers/FindController.java
  com.srezz.controllers.FindController
-com/srezz/services/impl/HibernateHqlGroupService.java
- com.srezz.services.impl.HibernateHqlGroupService
-com/srezz/modelDto/MusicGroupSaveDto.java
- com.srezz.modelDto.MusicGroupSaveDto
+com/srezz/exception/advicecontroller/AdviceController.java
+ com.srezz.exception.advicecontroller.AdviceController

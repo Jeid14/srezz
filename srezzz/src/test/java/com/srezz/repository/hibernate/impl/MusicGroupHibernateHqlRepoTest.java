@@ -4,19 +4,15 @@ import com.srezz.entity.MusicGroup;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
-import org.springframework.test.util.ReflectionTestUtils;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Stream;
-import static com.srezz.utils.HqlQuery.SELECT_MUSIC_GROUP_BY_NAME;
-import static com.srezz.utils.HqlQuery.SELECT_MUSIC_GROUP_BY_NAMES;
+import static com.srezz.utils.HqlQuery.*;
 
 class MusicGroupHibernateHqlRepoTest {
 
@@ -24,11 +20,6 @@ class MusicGroupHibernateHqlRepoTest {
     private final Session session = Mockito.mock(Session.class);
     private final MusicGroupHibernateHqlRepo cut = new MusicGroupHibernateHqlRepo(sessionFactory);
     private final Query<MusicGroup> query = Mockito.mock(Query.class);
-
-    @BeforeEach
-    public void setUp() {
-        ReflectionTestUtils.setField(cut, "musicGroupQuery", query);
-    }
 
     static Stream<Arguments> saveTestNominal() {
         return Stream.of(
@@ -46,7 +37,7 @@ class MusicGroupHibernateHqlRepoTest {
 
         cut.save(musicGroup);
 
-        Mockito.verify(session, Mockito.only()).save(musicGroup);
+        Mockito.verify(session, Mockito.times(1)).save(musicGroup);
     }
 
     static Stream<Arguments> findByNamesTestNominal() {
@@ -69,9 +60,10 @@ class MusicGroupHibernateHqlRepoTest {
         Mockito.when(sessionFactory.getCurrentSession()).thenReturn(session);
         Mockito.when(session.createQuery(SELECT_MUSIC_GROUP_BY_NAMES, MusicGroup.class)).thenReturn(query);
 
-        List<MusicGroup> actual = cut.findByNames(names);
+        cut.findByNames(names);
 
-        Mockito.verify(query, Mockito.only());
+        Mockito.verify(query, Mockito.times(1)).setParameterList(NAME_PARAMETER, names);
+        Mockito.verify(query, Mockito.times(1)).list();
     }
 
     static Stream<Arguments> findByNameTestNominal() {
@@ -90,8 +82,8 @@ class MusicGroupHibernateHqlRepoTest {
         Mockito.when(session.createQuery(SELECT_MUSIC_GROUP_BY_NAME, MusicGroup.class)).thenReturn(query);
         Mockito.when(query.uniqueResultOptional()).thenReturn(Optional.of(expected));
 
-        Optional<MusicGroup> actual = cut.findByName(name);
+        cut.findByName(name);
 
-        Assertions.assertEquals(Optional.of(expected), actual);
+        Mockito.verify(query, Mockito.times(1)).uniqueResultOptional();
     }
 }
