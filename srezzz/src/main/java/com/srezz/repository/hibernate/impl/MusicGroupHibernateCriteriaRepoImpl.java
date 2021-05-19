@@ -1,6 +1,5 @@
 package com.srezz.repository.hibernate.impl;
 
-import com.srezz.entity.Album;
 import com.srezz.entity.MusicGroup;
 import com.srezz.qualifier.CriteriaQualifier;
 import com.srezz.repository.hibernate.IMusicGroupHibernateRepo;
@@ -43,7 +42,7 @@ public class MusicGroupHibernateCriteriaRepoImpl implements IMusicGroupHibernate
     }
 
     @Override
-    public List<MusicGroup> findAll() {
+    public Optional<MusicGroup> findByName(String oldName) {
         return null;
     }
 }

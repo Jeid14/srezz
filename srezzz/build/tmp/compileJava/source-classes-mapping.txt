@@ -1,64 +1,68 @@
-com/srezz/modelDto/MusicGroupUpdateDto.java
- com.srezz.modelDto.MusicGroupUpdateDto
-com/srezz/config/SecurityConfig.java
- com.srezz.config.SecurityConfig
 com/srezz/utils/Mappings.java
  com.srezz.utils.Mappings
-com/srezz/repository/hibernate/IAlbumHibernateRepo.java
- com.srezz.repository.hibernate.IAlbumHibernateRepo
-com/srezz/repository/hibernate/IGenreHibernateRepo.java
- com.srezz.repository.hibernate.IGenreHibernateRepo
-com/srezz/modelDto/MusicGroupSaveDto.java
- com.srezz.modelDto.MusicGroupSaveDto
-com/srezz/entity/Genre.java
- com.srezz.entity.Genre
-com/srezz/controllers/SaveController.java
- com.srezz.controllers.SaveController
-com/srezz/ApplicationStarter.java
- com.srezz.ApplicationStarter
-com/srezz/modelDto/MusicAlbumDto.java
- com.srezz.modelDto.MusicAlbumDto
-com/srezz/config/HibernateConfig.java
- com.srezz.config.HibernateConfig
+com/srezz/exception/GroupNotFoundException.java
+ com.srezz.exception.GroupNotFoundException
 com/srezz/modelDto/ErrorDto.java
  com.srezz.modelDto.ErrorDto
+com/srezz/repository/hibernate/impl/MusicGroupHibernateJpql.java
+ com.srezz.repository.hibernate.impl.MusicGroupHibernateJpql
 com/srezz/utils/ExceptionsMessage.java
  com.srezz.utils.ExceptionsMessage
-com/srezz/controllers/UpdateController.java
- com.srezz.controllers.UpdateController
+com/srezz/qualifier/JpaQualifier.java
+ com.srezz.qualifier.JpaQualifier
 com/srezz/utils/Fields.java
  com.srezz.utils.Fields
 com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImpl.java
  com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImpl
-com/srezz/entity/Album.java
- com.srezz.entity.Album
+com/srezz/modelDto/AlbumForUser.java
+ com.srezz.modelDto.AlbumForUser
 com/srezz/exception/InvalidInputDataException.java
  com.srezz.exception.InvalidInputDataException
-com/srezz/config/HibernateCondition.java
- com.srezz.config.HibernateCondition
- com.srezz.config.HibernateCondition$CriteriaCondition
- com.srezz.config.HibernateCondition$HqlCondition
-com/srezz/qualifier/JpaQualifier.java
- com.srezz.qualifier.JpaQualifier
-com/srezz/services/IMusicGroupService.java
- com.srezz.services.IMusicGroupService
+com/srezz/config/HibernateConfig.java
+ com.srezz.config.HibernateConfig
+com/srezz/qualifier/HqlQualifier.java
+ com.srezz.qualifier.HqlQualifier
+com/srezz/modelDto/MusicGroupSaveDto.java
+ com.srezz.modelDto.MusicGroupSaveDto
+com/srezz/ApplicationStarter.java
+ com.srezz.ApplicationStarter
+com/srezz/modelDto/MusicAlbumDto.java
+ com.srezz.modelDto.MusicAlbumDto
 com/srezz/entity/MusicGroup.java
  com.srezz.entity.MusicGroup
 com/srezz/repository/hibernate/IMusicGroupHibernateRepo.java
  com.srezz.repository.hibernate.IMusicGroupHibernateRepo
-com/srezz/qualifier/CriteriaQualifier.java
- com.srezz.qualifier.CriteriaQualifier
-com/srezz/repository/hibernate/impl/MusicGroupJpql.java
- com.srezz.repository.hibernate.impl.MusicGroupJpql
-com/srezz/services/impl/HibernateMusicGroupBase.java
- com.srezz.services.impl.HibernateMusicGroupBase
 com/srezz/modelDto/GroupDto.java
  com.srezz.modelDto.GroupDto
+com/srezz/entity/Genre.java
+ com.srezz.entity.Genre
+com/srezz/repository/hibernate/impl/MusicGroupHibernateHqlRepo.java
+ com.srezz.repository.hibernate.impl.MusicGroupHibernateHqlRepo
+com/srezz/entity/Album.java
+ com.srezz.entity.Album
+com/srezz/config/SecurityConfig.java
+ com.srezz.config.SecurityConfig
+com/srezz/qualifier/CriteriaQualifier.java
+ com.srezz.qualifier.CriteriaQualifier
+com/srezz/config/HibernateCondition.java
+ com.srezz.config.HibernateCondition
+ com.srezz.config.HibernateCondition$CriteriaCondition
+ com.srezz.config.HibernateCondition$HqlCondition
+com/srezz/modelDto/MusicGroupUpdateDto.java
+ com.srezz.modelDto.MusicGroupUpdateDto
+com/srezz/controllers/SaveController.java
+ com.srezz.controllers.SaveController
+com/srezz/services/IMusicGroupService.java
+ com.srezz.services.IMusicGroupService
+com/srezz/services/impl/HibernateMusicGroupBase.java
+ com.srezz.services.impl.HibernateMusicGroupBase
 com/srezz/services/impl/HibernateCriteriaGroupService.java
  com.srezz.services.impl.HibernateCriteriaGroupService
-com/srezz/modelDto/AlbumForUser.java
- com.srezz.modelDto.AlbumForUser
+com/srezz/controllers/UpdateController.java
+ com.srezz.controllers.UpdateController
 com/srezz/services/impl/MusicGroupJpqlService.java
  com.srezz.services.impl.MusicGroupJpqlService
 com/srezz/controllers/FindController.java
  com.srezz.controllers.FindController
+com/srezz/services/impl/HibernateHqlGroupService.java
+ com.srezz.services.impl.HibernateHqlGroupService
