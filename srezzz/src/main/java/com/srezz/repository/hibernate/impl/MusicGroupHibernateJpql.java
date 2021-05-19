@@ -1,6 +1,7 @@
 package com.srezz.repository.hibernate.impl;
 
 import com.srezz.entity.MusicGroup;
+import com.srezz.modelDto.MusicGroupSaveDto;
 import com.srezz.qualifier.JpaQualifier;
 import com.srezz.repository.hibernate.IMusicGroupHibernateRepo;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -27,8 +29,7 @@ public class MusicGroupHibernateJpql implements IMusicGroupHibernateRepo {
 
     @Override
     public void save(MusicGroup musicGroup) {
-//        String jqlQuery = "INSERT ";
-//        TypedQuery<MusicGroup> query = entityManager.createQuery(jqlQuery, MusicGroup.class);
+        entityManager.persist(musicGroup);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class MusicGroupHibernateJpql implements IMusicGroupHibernateRepo {
         String jqlQuery = "SELECT mg FROM MusicGroup mg WHERE lower(name) = lower(:name) AND mg.id in (SELECT a.musicGroup FROM Album a)";
         TypedQuery<MusicGroup> query = entityManager.createQuery(jqlQuery, MusicGroup.class);
         query.setParameter("name", oldName);
-       return query.getResultStream().findAny();
+        return query.getResultStream().findAny();
     }
 
 }
