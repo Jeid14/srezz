@@ -23,7 +23,6 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
         this.sessionFactory = sessionFactory;
     }
 
-
     @Override
     public void save(MusicGroup musicGroup) {
         Session session = sessionFactory.getCurrentSession();
