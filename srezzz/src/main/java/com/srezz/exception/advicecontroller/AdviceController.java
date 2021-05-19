@@ -35,6 +35,6 @@ public class AdviceController {
                 .status(HttpStatus.BAD_REQUEST)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HEADER_CONTENT_TYPE, APPLICATION_JSON_WITH_CHARSET)
-                .body(e.getMessage());
+                .body(e.getErrors().get(0).getMessage());
     }
 }
