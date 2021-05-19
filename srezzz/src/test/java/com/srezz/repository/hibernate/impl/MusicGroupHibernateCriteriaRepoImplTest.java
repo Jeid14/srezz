@@ -8,12 +8,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
-
 import javax.persistence.criteria.*;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
-
 import static com.srezz.utils.HqlQuery.NAME_PARAMETER;
 
 class MusicGroupHibernateCriteriaRepoImplTest {
@@ -53,6 +51,14 @@ class MusicGroupHibernateCriteriaRepoImplTest {
         );
     }
 
+    private static Stream<Arguments> findByNameTestSource() {
+        return Stream.of(
+                Arguments.arguments("Смех"),
+                Arguments.arguments("Slipknot"),
+                Arguments.arguments("Pendulum")
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("saveTestSource")
     void saveTest(MusicGroup musicGroup) {
@@ -82,5 +88,24 @@ class MusicGroupHibernateCriteriaRepoImplTest {
         cut.findByNames(names);
 
         Mockito.verify(musicGroupQuery, Mockito.times(1)).list();
+    }
+
+    @ParameterizedTest
+    @MethodSource("findByNameTestSource")
+    void findByNameTest(String oldName) {
+        Mockito.when(sessionFactory.getCurrentSession()).thenReturn(session);
+        Mockito.when(session.getCriteriaBuilder()).thenReturn(builder);
+        Mockito.when(builder.createQuery(MusicGroup.class)).thenReturn(query);
+        Mockito.when(query.from(MusicGroup.class)).thenReturn(root);
+        Mockito.when(query.select(root)).thenReturn(query);
+        Mockito.when(root.get(NAME_PARAMETER)).thenReturn(path);
+        Mockito.when(builder.equal(builder.lower(root.get(NAME_PARAMETER)), oldName.toLowerCase())).thenReturn(predicate);
+        Mockito.when(query.where(builder.equal(builder.lower(root.get(NAME_PARAMETER)), oldName.toLowerCase()))).thenReturn(query);
+        Mockito.when(query.select(root).where(builder.equal(builder.lower(root.get(NAME_PARAMETER)), oldName.toLowerCase()))).thenReturn(query);
+        Mockito.when(session.createQuery(query)).thenReturn(musicGroupQuery);
+
+        cut.findByName(oldName);
+
+        Mockito.verify(musicGroupQuery, Mockito.times(1)).uniqueResultOptional();
     }
 }
