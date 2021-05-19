@@ -1,5 +1,6 @@
 package com.srezz.services;
 
+import com.srezz.modelDto.GroupDto;
 import com.srezz.modelDto.MusicGroupSaveDto;
 import com.srezz.modelDto.MusicGroupUpdateDto;
 import java.util.Set;
@@ -9,7 +10,7 @@ public interface IMusicGroupService {
 
     void addMusicGroup(MusicGroupSaveDto musicGroupSaveDto);
 
-    Set<MusicGroupSaveDto> getMusicGroups(Set<String> names);
+    Set<GroupDto> getMusicGroups(Set<String> names);
 
 
 }

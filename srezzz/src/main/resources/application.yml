@@ -1,7 +1,7 @@
 server:
   port: 8077
 db:
-  connector: jdbc
+  connector: hibernateCriteria
 spring:
   data:
     rest:
