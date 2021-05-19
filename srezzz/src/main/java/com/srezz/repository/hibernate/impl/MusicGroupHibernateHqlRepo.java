@@ -18,6 +18,7 @@ import static com.srezz.utils.HqlQuery.*;
 @ConditionalOnProperty(name = "db.connector", havingValue = "hibernateHql")
 public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
     private final SessionFactory sessionFactory;
+    private Query<MusicGroup> musicGroupQuery;
 
     public MusicGroupHibernateHqlRepo(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -32,7 +33,7 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
     @Override
     public List<MusicGroup> findByNames(Set<String> names) {
         Session session = sessionFactory.getCurrentSession();
-        Query<MusicGroup> musicGroupQuery = session.createQuery(SELECT_MUSIC_GROUP_BY_NAMES, MusicGroup.class);
+        musicGroupQuery = session.createQuery(SELECT_MUSIC_GROUP_BY_NAMES, MusicGroup.class);
         musicGroupQuery.setParameterList(NAME_PARAMETER, names);
         return musicGroupQuery.list();
     }
@@ -40,7 +41,7 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
     @Override
     public Optional<MusicGroup> findByName(String oldName) {
         Session session = sessionFactory.getCurrentSession();
-        Query<MusicGroup> musicGroupQuery = session.createQuery(SELECT_MUSIC_GROUP_BY_NAME, MusicGroup.class);
+        musicGroupQuery = session.createQuery(SELECT_MUSIC_GROUP_BY_NAME, MusicGroup.class);
         musicGroupQuery.setParameter(NAME_PARAMETER, oldName);
         return musicGroupQuery.uniqueResultOptional();
     }
