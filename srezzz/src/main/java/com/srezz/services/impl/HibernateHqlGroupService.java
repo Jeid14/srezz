@@ -17,13 +17,4 @@ public class HibernateHqlGroupService extends HibernateMusicGroupBase {
         super(musicGroupRepo);
     }
 
-    @Override
-    public void editMusicGroup(MusicGroupUpdateDto musicGroupUpdateDto) {
-
-    }
-
-    @Override
-    public void addMusicGroup(MusicGroupSaveDto musicGroupSaveDto) {
-
-    }
 }

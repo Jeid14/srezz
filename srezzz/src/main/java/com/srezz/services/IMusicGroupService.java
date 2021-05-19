@@ -11,8 +11,4 @@ public interface IMusicGroupService {
     void addMusicGroup(MusicGroupSaveDto musicGroupSaveDto);
 
     Set<GroupDto> getMusicGroups(Set<String> names);
-
-    Set<GroupDto> getAllMusicGroups();
-
-
 }

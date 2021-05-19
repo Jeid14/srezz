@@ -1,6 +1,5 @@
 package com.srezz.repository.hibernate.impl;
 
-import com.srezz.entity.Album;
 import com.srezz.entity.MusicGroup;
 import com.srezz.qualifier.HqlQualifier;
 import com.srezz.repository.hibernate.IMusicGroupHibernateRepo;
@@ -28,19 +27,10 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public void save(String name, short yearRelease, Set<Album> albums) {
-
-    }
 
     @Override
-    public boolean existsByNameAndGroup(String name, MusicGroup group) {
-        return false;
-    }
+    public void save(MusicGroup musicGroup) {
 
-    @Override
-    public Optional<MusicGroup> findByNameAndAlbum(String name, Album album) {
-        return Optional.empty();
     }
 
     @Override
@@ -49,5 +39,10 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
         Query<MusicGroup> musicGroupQuery = session.createQuery(SELECT_MUSIC_GROUP_BY_NAME, MusicGroup.class);
         musicGroupQuery.setParameterList(NAME_PARAMETER, names);
         return musicGroupQuery.list();
+    }
+
+    @Override
+    public Optional<MusicGroup> findByName(String oldName) {
+        return null;
     }
 }

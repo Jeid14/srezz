@@ -35,13 +35,4 @@ public class FindController {
         }
         return set;
     }
-    @GetMapping(READ_ALL)
-    public Set<GroupDto> getAll(){
-        Set<GroupDto> set = musicGroupService.getAllMusicGroups();
-        for (GroupDto s: set
-        ) {
-            System.out.println(  s.toString());
-        }
-        return set;
-    }
 }

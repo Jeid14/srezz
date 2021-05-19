@@ -18,19 +18,6 @@ public class MusicGroupJpqlService extends HibernateCriteriaGroupService {
         super(musicGroupRepo);
     }
 
-    @Override
-    public void editMusicGroup(MusicGroupUpdateDto musicGroupUpdateDto) {
-        super.editMusicGroup(musicGroupUpdateDto);
-    }
 
-    @Override
-    public void addMusicGroup(MusicGroupSaveDto musicGroupSaveDto) {
-        super.addMusicGroup(musicGroupSaveDto);
-    }
-
-    @Override
-    public Set<GroupDto> getAllMusicGroups() {
-        return super.getAllMusicGroups();
-    }
 }
 
