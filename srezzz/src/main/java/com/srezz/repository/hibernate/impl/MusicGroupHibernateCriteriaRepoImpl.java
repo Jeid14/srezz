@@ -7,9 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +28,8 @@ public class MusicGroupHibernateCriteriaRepoImpl implements IMusicGroupHibernate
 
     @Override
     public void save(MusicGroup musicGroup) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.save(musicGroup);
     }
 
     @Override
@@ -43,6 +44,11 @@ public class MusicGroupHibernateCriteriaRepoImpl implements IMusicGroupHibernate
 
     @Override
     public Optional<MusicGroup> findByName(String oldName) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<MusicGroup> criteriaQuery = builder.createQuery(MusicGroup.class);
+        Root<MusicGroup> root = criteriaQuery.from(MusicGroup.class);
+        criteriaQuery.select(root).where(builder.equal(builder.lower(root.get(NAME_PARAMETER)), oldName.toLowerCase()));
+        return session.createQuery(criteriaQuery).uniqueResultOptional();
     }
 }
