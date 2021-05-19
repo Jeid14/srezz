@@ -4,6 +4,7 @@ import com.srezz.exception.InvalidInputDataException;
 import com.srezz.modelDto.ErrorDto;
 import com.srezz.modelDto.GroupDto;
 import com.srezz.services.IMusicGroupService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,7 @@ import static com.srezz.utils.Mappings.READ_BY_NAME;
 public class FindController {
     private final IMusicGroupService musicGroupService;
 
-    public FindController(IMusicGroupService musicGroupService) {
+    public FindController(@Qualifier("hibernateHqlAlbumService") IMusicGroupService musicGroupService) {
         this.musicGroupService = musicGroupService;
     }
 
