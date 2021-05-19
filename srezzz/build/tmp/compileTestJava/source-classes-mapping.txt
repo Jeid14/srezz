@@ -1,2 +1,0 @@
-com/srezz/repository/hibernate/impl/MusicGroupHibernateJpqlTest.java
- com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest
