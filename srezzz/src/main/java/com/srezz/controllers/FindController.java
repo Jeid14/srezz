@@ -30,8 +30,7 @@ public class FindController {
         }
 
         Set<GroupDto> set = musicGroupService.getMusicGroups(groupsName);
-        for (GroupDto s: set
-             ) {
+        for (GroupDto s: set) {
             System.out.println(  s.toString());
         }
         return set;
