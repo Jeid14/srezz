@@ -1,5 +1,8 @@
 package com.srezz.modelDto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import javax.validation.constraints.Max;
@@ -7,7 +10,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MusicGroupSaveDto {
     @NotBlank(message = "Invalid name!")
     String name;
