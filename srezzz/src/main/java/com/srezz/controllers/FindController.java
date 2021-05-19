@@ -27,6 +27,12 @@ public class FindController {
         if (groupsName.stream().anyMatch(StringUtils::isEmpty)) {
             throw new InvalidInputDataException(new ErrorDto(REQUEST_PARAMETER, null, EMPTY_PARAMETER));
         }
-        return musicGroupService.getMusicGroups(groupsName);
+
+        Set<GroupDto> set = musicGroupService.getMusicGroups(groupsName);
+        for (GroupDto s: set
+             ) {
+            System.out.println(  s.toString());
+        }
+        return set;
     }
 }
