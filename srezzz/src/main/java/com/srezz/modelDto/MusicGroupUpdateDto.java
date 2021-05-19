@@ -3,7 +3,6 @@ package com.srezz.modelDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 
@@ -18,11 +17,8 @@ public class MusicGroupUpdateDto {
     @NotBlank(message = INVALID_NAME)
     String oldName;
     String newName;
-//    @Min(value = 1800, message = "Year creation must be no less than 1800")
     @Max(value = 2022, message = MAX_CREATING_WARNING)
     Short creationYear;
-//    @Min(value = 1800, message = "Year decay must be no less than 1800")
     @Max(value = 2022, message = MAX_DECAY_WARNING)
     Short decayYear;
-//    @Min(value = 0, message = "Available albums must be no less 0")
 }

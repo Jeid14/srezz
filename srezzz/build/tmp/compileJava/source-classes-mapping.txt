@@ -6,8 +6,8 @@ com/srezz/modelDto/ErrorDto.java
  com.srezz.modelDto.ErrorDto
 com/srezz/repository/hibernate/impl/MusicGroupHibernateJpql.java
  com.srezz.repository.hibernate.impl.MusicGroupHibernateJpql
-com/srezz/utils/HqlQuery.java
- com.srezz.utils.HqlQuery
+com/srezz/services/impl/SpringDataService.java
+ com.srezz.services.impl.SpringDataService
 com/srezz/controllers/UpdateController.java
  com.srezz.controllers.UpdateController
 com/srezz/utils/ExceptionsMessage.java
@@ -74,5 +74,5 @@ com/srezz/modelDto/MusicAlbumDto.java
  com.srezz.modelDto.MusicAlbumDto
 com/srezz/services/impl/HibernateHqlGroupService.java
  com.srezz.services.impl.HibernateHqlGroupService
-com/srezz/services/impl/SpringDataService.java
- com.srezz.services.impl.SpringDataService
+com/srezz/utils/HqlQuery.java
+ com.srezz.utils.HqlQuery
