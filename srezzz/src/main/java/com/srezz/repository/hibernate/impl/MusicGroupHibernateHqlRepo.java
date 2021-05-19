@@ -21,7 +21,7 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
     public static final String SELECT_ALBUM_BY_NAME = "FROM Album WHERE LOWER(name) IN (:name)";
     public static final String SELECT_ALBUM_BY_NAME_AND_MUSIC_GROUP = "FROM Album WHERE LOWER(name) = LOWER(:name) AND musicGroup = :musicGroup";
     public static final String SELECT_GENRE_BY_NAME = "FROM Genre WHERE LOWER(name) = LOWER(:name)";
-    public static final String SELECT_MUSIC_GROUP_BY_NAME = "FROM MusicGroup WHERE LOWER(name) = LOWER(:name)";
+    public static final String SELECT_MUSIC_GROUP_BY_NAME = "FROM MusicGroup WHERE LOWER(name) IN (:name)";
     private final SessionFactory sessionFactory;
 
     public MusicGroupHibernateHqlRepo(SessionFactory sessionFactory) {
@@ -48,6 +48,6 @@ public class MusicGroupHibernateHqlRepo implements IMusicGroupHibernateRepo {
         Session session = sessionFactory.getCurrentSession();
         Query<MusicGroup> musicGroupQuery = session.createQuery(SELECT_MUSIC_GROUP_BY_NAME, MusicGroup.class);
         musicGroupQuery.setParameterList(NAME_PARAMETER, names);
-        return musicGroupQuery.getResultList();
+        return musicGroupQuery.list();
     }
 }

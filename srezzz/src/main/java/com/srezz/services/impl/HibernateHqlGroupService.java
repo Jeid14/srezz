@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
-@Service("hibernateHqlAlbumService")
+@Service("hibernateHqlGroupService")
 @ConditionalOnProperty(name = "db.connector", havingValue = "hibernateHql")
-public class HibernateHqlAlbumService extends HibernateMusicGroupBase {
+public class HibernateHqlGroupService extends HibernateMusicGroupBase {
 
     @Autowired
-    public HibernateHqlAlbumService(@HqlQualifier IMusicGroupHibernateRepo musicGroupRepo) {
+    public HibernateHqlGroupService(@HqlQualifier IMusicGroupHibernateRepo musicGroupRepo) {
         super(musicGroupRepo);
     }
 
