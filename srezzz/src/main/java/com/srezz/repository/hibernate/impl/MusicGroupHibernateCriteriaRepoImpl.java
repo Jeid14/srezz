@@ -28,18 +28,8 @@ public class MusicGroupHibernateCriteriaRepoImpl implements IMusicGroupHibernate
     }
 
     @Override
-    public void save(String name, short yearRelease, Set<Album> albums) {
+    public void save(MusicGroup musicGroup) {
 
-    }
-
-    @Override
-    public boolean existsByNameAndGroup(String name, MusicGroup group) {
-        return false;
-    }
-
-    @Override
-    public Optional<MusicGroup> findByNameAndAlbum(String name, Album album) {
-        return Optional.empty();
     }
 
     @Override
@@ -50,6 +40,10 @@ public class MusicGroupHibernateCriteriaRepoImpl implements IMusicGroupHibernate
         Root<MusicGroup> root = criteriaQuery.from(MusicGroup.class);
         criteriaQuery.select(root).where(builder.lower(root.get(NAME_PARAMETER)).in(names));
         return session.createQuery(criteriaQuery).list();
+    }
 
+    @Override
+    public List<MusicGroup> findAll() {
+        return null;
     }
 }

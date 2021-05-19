@@ -17,12 +17,12 @@ public class GroupDto {
     @Min(value = 1800, message = "Year decay must be no less than 1800")
     @Max(value = 2022, message = "Year decay must be less than 2022")
     int decayYear;
-    Set<String> albums;
+    Set<AlbumForUser> albums;
 
     public GroupDto (@JsonProperty("name") String name,
                          @JsonProperty("creationYear") short creationYear,
                          @JsonProperty("decayYear") short decayYear,
-                         @JsonProperty("availableAlbums") Set<String> albums) {
+                         @JsonProperty("availableAlbums") Set<AlbumForUser> albums) {
         this.name = name;
         this.creationYear = creationYear;
         this.decayYear = decayYear;
