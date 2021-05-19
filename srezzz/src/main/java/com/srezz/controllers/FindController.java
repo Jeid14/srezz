@@ -8,7 +8,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Set;
+
 import static com.srezz.utils.ExceptionsMessage.EMPTY_PARAMETER;
 import static com.srezz.utils.Fields.REQUEST_PARAMETER;
 import static com.srezz.utils.Mappings.READ_BY_NAME;
@@ -17,13 +19,13 @@ import static com.srezz.utils.Mappings.READ_BY_NAME;
 public class FindController {
     private final IMusicGroupService musicGroupService;
 
-    public FindController( IMusicGroupService musicGroupService) {
+    public FindController(IMusicGroupService musicGroupService) {
         this.musicGroupService = musicGroupService;
     }
 
     @GetMapping(READ_BY_NAME)
-    public Set<GroupDto> getAllByNames(@RequestParam(name = "name") Set<String> groupsName){
-        if (groupsName.stream().anyMatch(StringUtils::isEmpty)) {
+    public Set<GroupDto> getAllByNames(@RequestParam(name = "name") Set<String> groupsName) {
+        if (groupsName.isEmpty()|| groupsName.stream().allMatch(x -> x.length()<=0)) {
             throw new InvalidInputDataException(new ErrorDto(REQUEST_PARAMETER, null, EMPTY_PARAMETER));
         }
 
