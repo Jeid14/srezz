@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-19T16:59:27" hostname="jeid14" time="0.16">
+<testsuite name="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-19T17:43:15" hostname="HP" time="0.02">
   <properties/>
-  <testcase name="findByName()" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.066"/>
-  <testcase name="[1] MusicGroup(id=1, name=jeid, yearCreation=1, yearDecay=1880)" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.027"/>
-  <testcase name="[2] MusicGroup(id=12, name=jeiddd, yearCreation=1590, yearDecay=1984)" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.001"/>
-  <testcase name="[3] MusicGroup(id=48834, name=jeid11, yearCreation=123, yearDecay=1666)" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.003"/>
+  <testcase name="findByName()" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.005"/>
+  <testcase name="[1] MusicGroup(id=1, name=jeid, yearCreation=1, yearDecay=1880)" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.002"/>
+  <testcase name="[2] MusicGroup(id=12, name=jeiddd, yearCreation=1590, yearDecay=1984)" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.004"/>
+  <testcase name="[3] MusicGroup(id=48834, name=jeid11, yearCreation=123, yearDecay=1666)" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.002"/>
   <testcase name="findByNames()" classname="com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

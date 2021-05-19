@@ -16,5 +16,7 @@ public class MusicGroupSaveDto {
     @Min(value = 1800, message = "Year creation must be no less than 1800")
     @Max(value = 2022, message = "Year creation must be less than 2022")
     short creationYear;
+    @Min(value = 1800, message = "Year decay must be no less than 1800")
+    @Max(value = 2022, message = "Year decay must be less than 2022")
     Short decayYear;
 }

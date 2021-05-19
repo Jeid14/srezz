@@ -1,2 +1,8 @@
+com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImplTest.java
+ com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImplTest
 com/srezz/repository/hibernate/impl/MusicGroupHibernateJpqlTest.java
  com.srezz.repository.hibernate.impl.MusicGroupHibernateJpqlTest
+com/srezz/controllers/UpdateControllerTest.java
+ com.srezz.controllers.UpdateControllerTest
+com/srezz/controllers/SaveControllerTest.java
+ com.srezz.controllers.SaveControllerTest

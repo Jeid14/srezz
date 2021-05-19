@@ -3,7 +3,7 @@ package com.srezz.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.srezz.exception.advicecontroller.AdviceController;
-import com.srezz.modelDto.MusicGroupUpdateDto;
+import com.srezz.modelDto.MusicGroupSaveDto;
 import com.srezz.services.IMusicGroupService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,11 +15,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.BindingResult;
 import java.util.stream.Stream;
-import static com.srezz.utils.Mappings.UPDATE_GROUP;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static com.srezz.utils.Mappings.SAVE_GROUP;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-class UpdateControllerTest {
+class SaveControllerTest {
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String APPLICATION_JSON_CHARSET_UTF_8 = "application/json; charset=utf-8";
     private final IMusicGroupService iMusicGroupService = Mockito.mock(IMusicGroupService.class);
@@ -29,7 +29,7 @@ class UpdateControllerTest {
 
     @BeforeEach
     public void setUp() {
-        UpdateController cut = new UpdateController(iMusicGroupService);
+        SaveController cut = new SaveController(iMusicGroupService);
         mockMvc = MockMvcBuilders
                 .standaloneSetup(cut)
                 .setControllerAdvice(new AdviceController())
@@ -40,49 +40,49 @@ class UpdateControllerTest {
         return objectMapper.writeValueAsString(obj);
     }
 
-    public static Stream<Arguments> updateMusicGroupTestNominal() {
+    public static Stream<Arguments> saveMusicGroupTestNominal() {
         return Stream.of(
-                Arguments.arguments(new MusicGroupUpdateDto("oldName", "newName", null, (short) 2020)),
-                Arguments.arguments(new MusicGroupUpdateDto("jeid", null, (short) 2012, null)),
-                Arguments.arguments(new MusicGroupUpdateDto("vurado", "trolan", (short) 2012, (short) 2020)),
-                Arguments.arguments(new MusicGroupUpdateDto("realtime", "something", (short) 2012, null)
+                Arguments.arguments(new MusicGroupSaveDto("oldName", (short) 2010, (short) 2020)),
+                Arguments.arguments(new MusicGroupSaveDto("jeid", (short) 2012, null)),
+                Arguments.arguments(new MusicGroupSaveDto("vurado", (short) 2012, (short) 2020)),
+                Arguments.arguments(new MusicGroupSaveDto("realtime", (short) 2012, null)
                 ));
     }
 
 
     @ParameterizedTest
-    @MethodSource("updateMusicGroupTestNominal")
-    void updateMusicGroupTest(MusicGroupUpdateDto musicGroupUpdateDto) throws Exception {
+    @MethodSource("saveMusicGroupTestNominal")
+    void saveMusicGroupTest(MusicGroupSaveDto musicGroupSaveDto) throws Exception {
         Mockito.when(bindingResult.hasErrors()).thenReturn(false);
-        Mockito.doNothing().when(iMusicGroupService).editMusicGroup(musicGroupUpdateDto);
+        Mockito.doNothing().when(iMusicGroupService).addMusicGroup(musicGroupSaveDto);
 
-        mockMvc.perform(patch(UPDATE_GROUP)
+        mockMvc.perform(post(SAVE_GROUP)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(mapToJson(musicGroupUpdateDto)))
+                .content(mapToJson(musicGroupSaveDto)))
                 .andExpect(status().isOk())
                 .andReturn();
     }
 
     public static Stream<Arguments> updateExceptionTestNominal() {
         return Stream.of(
-                Arguments.arguments(new MusicGroupUpdateDto(null, "newName", null, (short) 2020), "Invalid name!"),
-                Arguments.arguments(new MusicGroupUpdateDto("jeid", null, (short) 2030, null),
+                Arguments.arguments(new MusicGroupSaveDto(null,  (short) 2020, (short) 2020), "Invalid name!"),
+                Arguments.arguments(new MusicGroupSaveDto("jeid",  (short) 2030, null),
                         "Year creation must be less than 2022"),
-                Arguments.arguments(new MusicGroupUpdateDto("vurado", "trolan", (short) 2012, (short) 2030),
+                Arguments.arguments(new MusicGroupSaveDto( "trolan", (short) 2012, (short) 2040),
                         "Year decay must be less than 2022"),
-                Arguments.arguments(new MusicGroupUpdateDto("realtime", "something", (short) 2050, null),
+                Arguments.arguments(new MusicGroupSaveDto("realtime", (short) 2050, null),
                         "Year creation must be less than 2022")
         );
     }
 
     @ParameterizedTest
     @MethodSource("updateExceptionTestNominal")
-    void updateExceptionTest(MusicGroupUpdateDto musicGroupUpdateDto, String expected) throws Exception {
+    void updateExceptionTest(MusicGroupSaveDto musicGroupSaveDto, String expected) throws Exception {
         Mockito.when(bindingResult.hasErrors()).thenReturn(true);
 
-        mockMvc.perform(patch(UPDATE_GROUP)
+        mockMvc.perform(post(SAVE_GROUP)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(mapToJson(musicGroupUpdateDto)))
+                .content(mapToJson(musicGroupSaveDto)))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(expected))
                 .andExpect(header().stringValues(CONTENT_TYPE, APPLICATION_JSON_CHARSET_UTF_8))
