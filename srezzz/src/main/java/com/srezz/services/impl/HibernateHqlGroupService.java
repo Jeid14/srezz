@@ -1,7 +1,5 @@
 package com.srezz.services.impl;
 
-import com.srezz.modelDto.MusicGroupSaveDto;
-import com.srezz.modelDto.MusicGroupUpdateDto;
 import com.srezz.qualifier.HqlQualifier;
 import com.srezz.repository.hibernate.IMusicGroupHibernateRepo;
 import org.springframework.beans.factory.annotation.Autowired;

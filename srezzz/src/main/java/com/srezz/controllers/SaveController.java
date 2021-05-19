@@ -25,7 +25,7 @@ public class SaveController {
         if (bindingResult.hasErrors()) {
             throw new InvalidInputDataException(bindingResult);
         }
-        musicGroupService.addMusicGroup(musicGroupSaveDto);
 
+        musicGroupService.addMusicGroup(musicGroupSaveDto);
     }
 }

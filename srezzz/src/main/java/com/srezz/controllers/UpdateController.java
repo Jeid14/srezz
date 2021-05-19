@@ -23,7 +23,7 @@ public class UpdateController {
         if(bindingResult.hasErrors()){
             throw new InvalidInputDataException(bindingResult);
         }
-        musicGroupService.editMusicGroup(musicGroupUpdateDto);
 
+        musicGroupService.editMusicGroup(musicGroupUpdateDto);
     }
 }
