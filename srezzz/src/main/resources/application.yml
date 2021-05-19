@@ -1,0 +1,21 @@
+server:
+  port: 8077
+db:
+  connector: jdbc
+spring:
+  data:
+    rest:
+      base-path: /albums
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: 1111
+    url: jdbc:postgresql://localhost:5432/srezz
+    username: postgres
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false

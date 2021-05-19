@@ -1,0 +1,2 @@
+com/srezz/ApplicationStarter.java
+ com.srezz.ApplicationStarter
