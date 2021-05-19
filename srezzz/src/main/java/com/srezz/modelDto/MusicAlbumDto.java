@@ -3,10 +3,10 @@ package com.srezz.modelDto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Value;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 @Value
 public class MusicAlbumDto {
     @Size(min = 2, max = 255, message = "length of album name must be in a range from 2 to 255")
