@@ -1,6 +1,7 @@
 package com.srezz.services.impl;
 
 import com.srezz.entity.Album;
+import com.srezz.modelDto.AlbumForUser;
 import com.srezz.modelDto.GroupDto;
 import com.srezz.repository.hibernate.IMusicGroupHibernateRepo;
 import com.srezz.services.IMusicGroupService;
@@ -22,8 +23,9 @@ public abstract class HibernateMusicGroupBase  implements IMusicGroupService {
                 .stream()
                 .map(entity -> new GroupDto(entity.getName(), entity.getYearCreation(), entity.getYearDecay() == null ? 0 : entity.getYearDecay(), entity.getAlbums()
                         .stream()
-                        .map(Album::getName).collect(Collectors.toSet())))
+                        .map(album -> new AlbumForUser(album.getName(), album.getYearRelease(), album.getGenre().getName())).collect(Collectors.toSet())))
                 .collect(Collectors.toSet());
     }
+
 
 }

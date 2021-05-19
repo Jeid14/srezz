@@ -12,5 +12,7 @@ public interface IMusicGroupService {
 
     Set<GroupDto> getMusicGroups(Set<String> names);
 
+    Set<GroupDto> getAllMusicGroups();
+
 
 }

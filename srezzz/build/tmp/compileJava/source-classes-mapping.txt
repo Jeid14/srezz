@@ -1,56 +1,64 @@
 com/srezz/modelDto/MusicGroupUpdateDto.java
  com.srezz.modelDto.MusicGroupUpdateDto
-com/srezz/controllers/UpdateController.java
- com.srezz.controllers.UpdateController
+com/srezz/config/SecurityConfig.java
+ com.srezz.config.SecurityConfig
 com/srezz/utils/Mappings.java
  com.srezz.utils.Mappings
 com/srezz/repository/hibernate/IAlbumHibernateRepo.java
  com.srezz.repository.hibernate.IAlbumHibernateRepo
-com/srezz/config/HibernateCondition.java
- com.srezz.config.HibernateCondition
- com.srezz.config.HibernateCondition$CriteriaCondition
- com.srezz.config.HibernateCondition$HqlCondition
+com/srezz/repository/hibernate/IGenreHibernateRepo.java
+ com.srezz.repository.hibernate.IGenreHibernateRepo
 com/srezz/modelDto/MusicGroupSaveDto.java
  com.srezz.modelDto.MusicGroupSaveDto
-com/srezz/config/HibernateConfig.java
- com.srezz.config.HibernateConfig
+com/srezz/entity/Genre.java
+ com.srezz.entity.Genre
 com/srezz/controllers/SaveController.java
  com.srezz.controllers.SaveController
 com/srezz/ApplicationStarter.java
  com.srezz.ApplicationStarter
-com/srezz/repository/hibernate/IMusicGroupHibernateRepo.java
- com.srezz.repository.hibernate.IMusicGroupHibernateRepo
-com/srezz/repository/hibernate/IGenreHibernateRepo.java
- com.srezz.repository.hibernate.IGenreHibernateRepo
-com/srezz/entity/MusicGroup.java
- com.srezz.entity.MusicGroup
-com/srezz/qualifier/CriteriaQualifier.java
- com.srezz.qualifier.CriteriaQualifier
-com/srezz/entity/Genre.java
- com.srezz.entity.Genre
-com/srezz/entity/Album.java
- com.srezz.entity.Album
-com/srezz/config/SecurityConfig.java
- com.srezz.config.SecurityConfig
 com/srezz/modelDto/MusicAlbumDto.java
  com.srezz.modelDto.MusicAlbumDto
-com/srezz/services/IMusicGroupService.java
- com.srezz.services.IMusicGroupService
-com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImpl.java
- com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImpl
-com/srezz/utils/Fields.java
- com.srezz.utils.Fields
-com/srezz/exception/InvalidInputDataException.java
- com.srezz.exception.InvalidInputDataException
+com/srezz/config/HibernateConfig.java
+ com.srezz.config.HibernateConfig
 com/srezz/modelDto/ErrorDto.java
  com.srezz.modelDto.ErrorDto
 com/srezz/utils/ExceptionsMessage.java
  com.srezz.utils.ExceptionsMessage
-com/srezz/controllers/FindController.java
- com.srezz.controllers.FindController
-com/srezz/modelDto/GroupDto.java
- com.srezz.modelDto.GroupDto
+com/srezz/controllers/UpdateController.java
+ com.srezz.controllers.UpdateController
+com/srezz/utils/Fields.java
+ com.srezz.utils.Fields
+com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImpl.java
+ com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImpl
+com/srezz/entity/Album.java
+ com.srezz.entity.Album
+com/srezz/exception/InvalidInputDataException.java
+ com.srezz.exception.InvalidInputDataException
+com/srezz/config/HibernateCondition.java
+ com.srezz.config.HibernateCondition
+ com.srezz.config.HibernateCondition$CriteriaCondition
+ com.srezz.config.HibernateCondition$HqlCondition
+com/srezz/qualifier/JpaQualifier.java
+ com.srezz.qualifier.JpaQualifier
+com/srezz/services/IMusicGroupService.java
+ com.srezz.services.IMusicGroupService
+com/srezz/entity/MusicGroup.java
+ com.srezz.entity.MusicGroup
+com/srezz/repository/hibernate/IMusicGroupHibernateRepo.java
+ com.srezz.repository.hibernate.IMusicGroupHibernateRepo
+com/srezz/qualifier/CriteriaQualifier.java
+ com.srezz.qualifier.CriteriaQualifier
+com/srezz/repository/hibernate/impl/MusicGroupJpql.java
+ com.srezz.repository.hibernate.impl.MusicGroupJpql
 com/srezz/services/impl/HibernateMusicGroupBase.java
  com.srezz.services.impl.HibernateMusicGroupBase
+com/srezz/modelDto/GroupDto.java
+ com.srezz.modelDto.GroupDto
 com/srezz/services/impl/HibernateCriteriaGroupService.java
  com.srezz.services.impl.HibernateCriteriaGroupService
+com/srezz/modelDto/AlbumForUser.java
+ com.srezz.modelDto.AlbumForUser
+com/srezz/services/impl/MusicGroupJpqlService.java
+ com.srezz.services.impl.MusicGroupJpqlService
+com/srezz/controllers/FindController.java
+ com.srezz.controllers.FindController
