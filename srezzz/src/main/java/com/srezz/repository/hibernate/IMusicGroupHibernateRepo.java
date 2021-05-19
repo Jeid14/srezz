@@ -1,6 +1,7 @@
 package com.srezz.repository.hibernate;
 
 import com.srezz.entity.MusicGroup;
+import com.srezz.modelDto.MusicGroupSaveDto;
 
 import java.util.List;
 import java.util.Optional;
