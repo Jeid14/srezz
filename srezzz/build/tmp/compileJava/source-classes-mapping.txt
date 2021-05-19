@@ -14,8 +14,8 @@ com/srezz/utils/ExceptionsMessage.java
  com.srezz.utils.ExceptionsMessage
 com/srezz/utils/Fields.java
  com.srezz.utils.Fields
-com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImpl.java
- com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImpl
+com/srezz/utils/HqlQuery.java
+ com.srezz.utils.HqlQuery
 com/srezz/modelDto/AlbumForUser.java
  com.srezz.modelDto.AlbumForUser
 com/srezz/exception/InvalidInputDataException.java
@@ -74,5 +74,5 @@ com/srezz/modelDto/MusicAlbumDto.java
  com.srezz.modelDto.MusicAlbumDto
 com/srezz/services/impl/HibernateHqlGroupService.java
  com.srezz.services.impl.HibernateHqlGroupService
-com/srezz/utils/HqlQuery.java
- com.srezz.utils.HqlQuery
+com/srezz/repository/hibernate/impl/MusicGroupHibernateCriteriaRepoImpl.java
+ com.srezz.repository.hibernate.impl.MusicGroupHibernateCriteriaRepoImpl
